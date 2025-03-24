@@ -1,11 +1,10 @@
 {
-  "name": "n8n-community-nodes",
-  "version": "1.0.0",
-  "description": "Custom n8n with all community nodes pre-installed",
-  "scripts": {
-    "start": "n8n"
-  },
+  "name": "n8n-custom",
+  "private": true,
+  "license": "MIT",
   "dependencies": {
-    "n8n": "^1.40.0"
+    "n8n-nodes-stable-diffusion": "0.1.3",
+    "n8n-nodes-openai": "0.1.5",
+    "n8n-nodes-chatgpt": "0.0.4"
   }
 }
