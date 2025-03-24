@@ -1,16 +1,13 @@
 FROM n8nio/n8n:latest
 
+# Switch to root to install packages
 USER root
 
-# Create directory for community nodes
-RUN mkdir -p /data/community-nodes
+# Copy community nodes into the container
+COPY community-nodes /usr/local/lib/community-nodes
 
-# Copy custom nodes into container
-COPY community-nodes /data/community-nodes
+# Install the community nodes
+RUN cd /usr/local/lib/community-nodes && npm install --legacy-peer-deps
 
-# Install dependencies for each custom node
-RUN for dir in /data/community-nodes/*/ ; do \
-    cd "$dir" && npm install --legacy-peer-deps ; \
-done
-
+# Switch back to node user
 USER node
