@@ -1,12 +1,24 @@
+# Start from the official n8n image
 FROM n8nio/n8n
 
-# Create community node folder
-RUN mkdir -p /usr/local/lib/node_modules/n8n/packages/community-nodes
+# Set the working directory
+WORKDIR /home/node/.n8n
 
-# Optional: Example of how you could preinstall a custom node (e.g. Ultimate Assistant)
-# COPY packages /usr/local/lib/node_modules/n8n/packages
+# Install desired community nodes locally (you can add more as needed)
+RUN npm install \
+    n8n-nodes-stable-diffusion \
+    n8n-nodes-openai \
+    n8n-nodes-chatgpt \
+    n8n-nodes-gsheet
 
-# Install everything just in case
-RUN cd /usr/local/lib/node_modules/n8n && npm install
+# Ensure proper permissions (Railway runs as non-root)
+RUN chown -R node:node /home/node/.n8n
 
-WORKDIR /usr/local/lib/node_modules/n8n
+# Switch to the non-root "node" user (as required by base image)
+USER node
+
+# Expose the default n8n port
+EXPOSE 5678
+
+# Start n8n
+CMD ["n8n"]
