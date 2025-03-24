@@ -1,0 +1,1 @@
+// Dummy entry for n8n-nodes-chatgpt
