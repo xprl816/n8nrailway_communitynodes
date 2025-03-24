@@ -1,0 +1,10 @@
+{
+  "name": "n8n-community-nodes",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "n8n-nodes-stable-diffusion": "file:./n8n-nodes-stable-diffusion",
+    "n8n-nodes-openai": "file:./n8n-nodes-openai",
+    "n8n-nodes-chatgpt": "file:./n8n-nodes-chatgpt"
+  }
+}
