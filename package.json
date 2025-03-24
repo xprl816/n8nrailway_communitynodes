@@ -1,0 +1,11 @@
+{
+  "name": "n8n-community-nodes",
+  "version": "1.0.0",
+  "description": "Custom n8n with all community nodes pre-installed",
+  "scripts": {
+    "start": "n8n"
+  },
+  "dependencies": {
+    "n8n": "^1.40.0"
+  }
+}
